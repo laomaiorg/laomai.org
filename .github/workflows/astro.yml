@@ -58,7 +58,7 @@ jobs:
 
       - name: Copy
         run: |
-          rsync -av --delete dist/ root@${{ secrets.BLOG_DEPLOY_HOST }}:/root/docker/laomai.org
+          rsync -av --delete dist/ root@${{ secrets.BLOG_DEPLOY_HOST }}:/var/www/laomai.org
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
