@@ -59,16 +59,16 @@ jobs:
 
       - uses: webfactory/ssh-agent@v0.9.0
         with:
-          ssh-private-key: ${{ secrets.AL_DEPLOY_KEY }}
+          ssh-private-key: ${{ secrets.BLOG_DEPLOY_KEY }}
           log-public-key: false
 
       - name: Scan public keys
         run: |
-          ssh-keyscan ${{ secrets.AL_DEPLOY_HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan ${{ secrets.BLOG_DEPLOY_HOST }} >> ~/.ssh/known_hosts
 
       - name: Copy
         run: |
-          rsync -av --delete dist/ root@${{ secrets.AL_DEPLOY_HOST }}:/root/docker/laomai.org
+          rsync -av --delete dist/ root@${{ secrets.BLOG_DEPLOY_HOST }}:/root/docker/laomai.org
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
